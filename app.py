@@ -1030,8 +1030,6 @@ if __name__ == "__main__":
 
         show_insight_cards(insights)
 
-        st.write("")
-
         st.markdown(
             '<div class="section-title-left">분석 기준 README</div>',
             unsafe_allow_html=True,
