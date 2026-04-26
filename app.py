@@ -349,6 +349,39 @@ st.markdown(
         }
     }
     
+    @media (max-width: 640px) {
+        /* 상품 선택 제목 + reset 버튼 row만 한 줄 유지 */
+        .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] {
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) 2.4rem !important;
+            gap: 0.35rem !important;
+            width: 100% !important;
+            align-items: center !important;
+        }
+
+        .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
+        > div[data-testid="column"] {
+            width: 100% !important;
+            min-width: 0 !important;
+            max-width: 100% !important;
+            flex: none !important;
+        }
+
+        .st-key-asset_title_reset_group .section-title-left {
+            white-space: nowrap !important;
+            margin-bottom: 0 !important;
+        }
+
+        .st-key-asset_title_reset_group .stButton button {
+            width: 100% !important;
+            min-width: 0 !important;
+            height: 2rem !important;
+            min-height: 2rem !important;
+            padding: 0 !important;
+            font-size: 0.9rem !important;
+        }
+    }
+    
     </style>
     """,
     unsafe_allow_html=True,
@@ -1043,25 +1076,26 @@ if __name__ == "__main__":
 
     # 4. 왼쪽 단: 상품 선택 + 대상기간 선택
     with metric_col:
-        asset_title_col, asset_reset_col = st.columns([0.78, 0.22], gap="small")
-
-        with asset_title_col:
-            st.markdown(
-                '<div class="section-title-left">상품 선택</div>',
-                unsafe_allow_html=True,
-            )
-
-        with asset_reset_col:
-            if st.button(
-                "↻",
-                help="상품 선택 초기화",
-                use_container_width=True,
-                key="reset_asset_selection",
-            ):
-                asset_names = sorted(raw_df_all["asset_name"].dropna().unique().tolist())
-                st.session_state.asset_selector = asset_names.copy()
-                st.rerun()
-
+        with st.container(key="asset_title_reset_group"):
+            asset_title_col, asset_reset_col = st.columns([0.78, 0.22], gap="small")
+    
+            with asset_title_col:
+                st.markdown(
+                    '<div class="section-title-left">상품 선택</div>',
+                    unsafe_allow_html=True,
+                )
+    
+            with asset_reset_col:
+                if st.button(
+                    "↻",
+                    help="상품 선택 초기화",
+                    use_container_width=True,
+                    key="reset_asset_selection",
+                ):
+                    asset_names = sorted(raw_df_all["asset_name"].dropna().unique().tolist())
+                    st.session_state.asset_selector = asset_names.copy()
+                    st.rerun()
+    
         period_df = show_period_selector(raw_df_all, source_key=source_key)
         raw_df = show_asset_selector(period_df, source_key=source_key)
 
