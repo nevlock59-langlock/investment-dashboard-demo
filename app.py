@@ -1204,7 +1204,7 @@ if __name__ == "__main__":
     # 4. 왼쪽 단: 상품 선택 + 대상기간 선택
     with metric_col:
         with st.container(key="asset_title_reset_group"):
-            asset_title_col, asset_reset_col = st.columns([0.65, 0.35], gap="small")
+            asset_title_col, asset_reset_col = st.columns([0.75, 0.25], gap="small")
     
             with asset_title_col:
                 st.markdown(
