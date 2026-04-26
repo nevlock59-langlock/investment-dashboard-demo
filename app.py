@@ -601,9 +601,9 @@ def format_number(value: float) -> str:
         return "-"
 
     if abs(value) >= 100_000_000:
-        return f"$ {value / 100_000_000:,.1f}억"
+        return f"${value / 100_000_000:,.1f}억"
     if abs(value) >= 10_000:
-        return f"$ {value / 10_000:,.1f}만"
+        return f"${value / 10_000:,.1f}만"
 
     return f"{value:,.0f}"
 
