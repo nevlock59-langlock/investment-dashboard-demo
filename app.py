@@ -469,9 +469,6 @@ st.markdown(
     }
 
 ###################
-st.markdown(
-    """
-    <style>
     /* reset 버튼을 오른쪽 끝으로 밀착 */
     .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
     > div[data-testid="column"]:last-child {
@@ -511,10 +508,6 @@ st.markdown(
             max-width: 44px !important;
         }
     }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
     
     </style>
     """,
