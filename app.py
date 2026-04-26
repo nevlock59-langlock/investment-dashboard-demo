@@ -601,9 +601,9 @@ def format_number(value: float) -> str:
         return "-"
 
     if abs(value) >= 100_000_000:
-        return f"{value / 100_000_000:.1f}억"
+        return f"$ {value / 100_000_000:,.1f}억"
     if abs(value) >= 10_000:
-        return f"{value / 10_000:.1f}만"
+        return f"$ {value / 10_000:,.1f}만"
 
     return f"{value:,.0f}"
 
@@ -663,6 +663,13 @@ def show_rank_cards(
                 f"거래량 {format_number(row['total_volume'])}"
             )
 
+def format_usd(value):
+    if value is None:
+        return "-"
+    try:
+        return f"${float(value):,.0f}"
+    except (TypeError, ValueError):
+        return "-"
 
 def show_ranking_tabs(summary: pd.DataFrame):
     tab_value, tab_volume, tab_up, tab_down, tab_market_cap = st.tabs(
