@@ -626,6 +626,65 @@ st.markdown(
         }
     }
 
+################
+    /* 최근 거래내역 페이지 네비게이션: 가운데 정렬 + 버튼 고정폭 */
+    .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] {
+        display: grid !important;
+        grid-template-columns: 72px max-content 72px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] 
+    > div[data-testid="column"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        flex: none !important;
+    }
+
+    .st-key-recent_page_nav_group .stButton button {
+        width: 72px !important;
+        min-width: 72px !important;
+        max-width: 72px !important;
+        height: 32px !important;
+        min-height: 32px !important;
+        padding: 0 !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+    }
+
+    .st-key-recent_page_nav_group .page-nav-text {
+        height: 32px !important;
+        line-height: 32px !important;
+        text-align: center !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        padding: 0 4px !important;
+    }
+
+    @media (max-width: 640px) {
+        .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] {
+            grid-template-columns: 62px max-content 62px !important;
+            gap: 6px !important;
+        }
+
+        .st-key-recent_page_nav_group .stButton button {
+            width: 62px !important;
+            min-width: 62px !important;
+            max-width: 62px !important;
+            font-size: 11px !important;
+        }
+
+        .st-key-recent_page_nav_group .page-nav-text {
+            font-size: 11px !important;
+            padding: 0 2px !important;
+        }
+    }
+
     </style>
     """,
     unsafe_allow_html=True,
