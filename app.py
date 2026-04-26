@@ -683,7 +683,7 @@ st.markdown(
             padding: 0 2px !important;
         }
     }
-########################
+
     /* 최근 거래내역 페이지 네비게이션: 묶음 자체를 가운데 정렬 */
     .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] {
         width: fit-content !important;
@@ -699,7 +699,13 @@ st.markdown(
         width: auto !important;
         flex: none !important;
     }
-
+##################
+    /* 최근 거래내역 페이지 네비게이션: 좌우 여백 살짝 */
+    .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        box-sizing: border-box !important;
+    }
     </style>
     """,
     unsafe_allow_html=True,
