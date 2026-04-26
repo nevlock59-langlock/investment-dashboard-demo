@@ -467,6 +467,19 @@ st.markdown(
             max-width: 44px !important;
         }
     }
+
+###################
+    .st-key-asset_title_reset_group {
+        outline: 1px solid red !important;
+    }
+
+    .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] {
+        outline: 1px solid blue !important;
+    }
+
+    .st-key-asset_title_reset_group div[data-testid="column"]:nth-child(2) {
+        outline: 1px solid green !important;
+    }
     
     </style>
     """,
