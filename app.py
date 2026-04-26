@@ -469,17 +469,52 @@ st.markdown(
     }
 
 ###################
-    .st-key-asset_title_reset_group {
-        outline: 1px solid red !important;
+st.markdown(
+    """
+    <style>
+    /* reset 버튼을 오른쪽 끝으로 밀착 */
+    .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
+    > div[data-testid="column"]:last-child {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        justify-self: end !important;
     }
 
-    .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] {
-        outline: 1px solid blue !important;
+    .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
+    > div[data-testid="column"]:last-child div[data-testid="stButton"] {
+        display: flex !important;
+        justify-content: flex-end !important;
+        width: 48px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
     }
 
-    .st-key-asset_title_reset_group div[data-testid="column"]:nth-child(2) {
-        outline: 1px solid green !important;
+    .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
+    > div[data-testid="column"]:last-child button {
+        width: 48px !important;
+        min-width: 48px !important;
+        max-width: 48px !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
     }
+
+    @media (max-width: 640px) {
+        .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
+        > div[data-testid="column"]:last-child div[data-testid="stButton"],
+        .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
+        > div[data-testid="column"]:last-child button {
+            width: 44px !important;
+            min-width: 44px !important;
+            max-width: 44px !important;
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
     
     </style>
     """,
