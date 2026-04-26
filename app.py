@@ -468,7 +468,6 @@ st.markdown(
         }
     }
 
-###################
     /* reset 버튼을 오른쪽 끝으로 밀착 */
     .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
     > div[data-testid="column"]:last-child {
@@ -508,7 +507,74 @@ st.markdown(
             max-width: 44px !important;
         }
     }
-    
+#####################
+
+    /* 최근 거래내역 표: 모바일 화면 폭 안에 맞추기 */
+    .st-key-recent_table_group {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    .st-key-recent_table_group table {
+        width: 100% !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+    }
+
+    .st-key-recent_table_group th,
+    .st-key-recent_table_group td {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+        box-sizing: border-box !important;
+    }
+
+    @media (max-width: 640px) {
+        .st-key-recent_table_group table {
+            font-size: 10px !important;
+        }
+
+        .st-key-recent_table_group th,
+        .st-key-recent_table_group td {
+            padding: 4px 3px !important;
+        }
+
+        /* 컬럼별 폭 조정: 순위 / 일자 / 상품명 / 가격 / 거래량 / 자산군 */
+        .st-key-recent_table_group th:nth-child(1),
+        .st-key-recent_table_group td:nth-child(1) {
+            width: 9% !important;
+        }
+
+        .st-key-recent_table_group th:nth-child(2),
+        .st-key-recent_table_group td:nth-child(2) {
+            width: 18% !important;
+        }
+
+        .st-key-recent_table_group th:nth-child(3),
+        .st-key-recent_table_group td:nth-child(3) {
+            width: 25% !important;
+        }
+
+        .st-key-recent_table_group th:nth-child(4),
+        .st-key-recent_table_group td:nth-child(4) {
+            width: 18% !important;
+        }
+
+        .st-key-recent_table_group th:nth-child(5),
+        .st-key-recent_table_group td:nth-child(5) {
+            width: 17% !important;
+        }
+
+        .st-key-recent_table_group th:nth-child(6),
+        .st-key-recent_table_group td:nth-child(6) {
+            width: 13% !important;
+        }
+    }
+
     </style>
     """,
     unsafe_allow_html=True,
@@ -957,7 +1023,8 @@ def show_paginated_dataframe(df: pd.DataFrame, page_size: int = 10):
             lambda value: "-" if pd.isna(value) else f"{value:,.0f}"
         )
 
-    render_recent_table(page_df)
+    with st.container(key="recent_table_group"):
+        render_recent_table(page_df)
 
     spacer_left, prev_col, page_col, next_col, spacer_right = st.columns(
         [0.6, 1, 1.6, 1, 0.6],
