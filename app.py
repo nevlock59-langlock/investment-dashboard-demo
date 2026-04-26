@@ -313,6 +313,35 @@ st.markdown(
             font-size: 0.78rem !important;
         }
     }
+
+    /* 시작일/종료일 그룹만 모바일에서 한 줄 유지 */
+    @media (max-width: 640px) {
+        .st-key-date_range_group div[data-testid="stHorizontalBlock"] {
+            flex-wrap: nowrap !important;
+            gap: 0.35rem !important;
+        }
+
+        .st-key-date_range_group div[data-testid="column"] {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+            width: 50% !important;
+        }
+
+        .st-key-date_range_group div[data-testid="stTextInput"] {
+            min-width: 0 !important;
+        }
+
+        .st-key-date_range_group input {
+            font-size: 0.72rem !important;
+            padding-left: 0.35rem !important;
+            padding-right: 0.35rem !important;
+        }
+
+        .st-key-date_range_group label {
+            font-size: 0.75rem !important;
+            white-space: nowrap !important;
+        }
+    }
     
     </style>
     """,
@@ -645,26 +674,27 @@ def show_period_selector(raw_df: pd.DataFrame, source_key: str) -> pd.DataFrame:
         st.session_state[start_key] = format_date(min_date)
         st.session_state[end_key] = format_date(max_date)
 
-    start_col, end_col = st.columns(2, gap="small")
-
-    with start_col:
-        start_text = st.text_input(
-            "시작일",
-            key=start_key,
-            placeholder="YYYY-MM-DD",
-            on_change=normalize_date_input,
-            args=(start_key, min_date, max_date),
-        )
-
-    with end_col:
-        end_text = st.text_input(
-            "종료일",
-            key=end_key,
-            placeholder="YYYY-MM-DD",
-            on_change=normalize_date_input,
-            args=(end_key, min_date, max_date),
-        )
-
+    with st.container(key="date_range_group"):
+        start_col, end_col = st.columns(2, gap="small")
+    
+        with start_col:
+            start_text = st.text_input(
+                "시작일",
+                key=start_key,
+                placeholder="YYYY-MM-DD",
+                on_change=normalize_date_input,
+                args=(start_key, min_date, max_date),
+            )
+    
+        with end_col:
+            end_text = st.text_input(
+                "종료일",
+                key=end_key,
+                placeholder="YYYY-MM-DD",
+                on_change=normalize_date_input,
+                args=(end_key, min_date, max_date),
+            )
+    
     start_date = parse_flexible_date(start_text)
     end_date = parse_flexible_date(end_text)
 
