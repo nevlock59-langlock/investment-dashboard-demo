@@ -314,27 +314,33 @@ st.markdown(
         }
     }
 
-    /* 시작일/종료일 그룹만 모바일에서 한 줄 유지 */
     @media (max-width: 640px) {
+        /* 시작일/종료일 그룹만 2칸 grid로 고정 */
         .st-key-date_range_group div[data-testid="stHorizontalBlock"] {
-            flex-wrap: nowrap !important;
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
             gap: 0.35rem !important;
+            width: 100% !important;
         }
 
-        .st-key-date_range_group div[data-testid="column"] {
-            flex: 1 1 0 !important;
+        .st-key-date_range_group div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
+            width: 100% !important;
             min-width: 0 !important;
-            width: 50% !important;
+            max-width: 100% !important;
+            flex: none !important;
         }
 
         .st-key-date_range_group div[data-testid="stTextInput"] {
+            width: 100% !important;
             min-width: 0 !important;
         }
 
         .st-key-date_range_group input {
+            width: 100% !important;
+            min-width: 0 !important;
             font-size: 0.72rem !important;
-            padding-left: 0.35rem !important;
-            padding-right: 0.35rem !important;
+            padding-left: 0.32rem !important;
+            padding-right: 0.32rem !important;
         }
 
         .st-key-date_range_group label {
