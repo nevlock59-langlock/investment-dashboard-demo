@@ -290,26 +290,29 @@ st.markdown(
         overflow-x: auto;
     }
 
-    /* 모바일에서도 날짜 선택 2칸은 한 줄 유지 */
-    div[data-testid="stHorizontalBlock"] {
-        flex-wrap: nowrap !important;
-    }
+    /* 모바일에서 date_input 2개가 들어간 columns만 한 줄 유지 */
+    @media (max-width: 640px) {
+        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stDateInput"]) {
+            flex-wrap: nowrap !important;
+            gap: 0.35rem !important;
+        }
 
-    div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
-        min-width: 0 !important;
-    }
+        div[data-testid="stHorizontalBlock"]:has(div[data-testid="stDateInput"]) 
+        > div[data-testid="column"] {
+            min-width: 0 !important;
+            flex: 1 1 0 !important;
+        }
 
-    /* date_input 내부 글자/입력칸이 너무 커지지 않게 */
-    div[data-testid="stDateInput"] input {
-        font-size: 0.82rem !important;
-        padding-left: 0.45rem !important;
-        padding-right: 0.45rem !important;
-    }
+        div[data-testid="stDateInput"] input {
+            font-size: 0.78rem !important;
+            padding-left: 0.35rem !important;
+            padding-right: 0.35rem !important;
+        }
 
-    div[data-testid="stDateInput"] label {
-        font-size: 0.8rem !important;
+        div[data-testid="stDateInput"] label {
+            font-size: 0.78rem !important;
+        }
     }
-
     </style>
     """,
     unsafe_allow_html=True,
