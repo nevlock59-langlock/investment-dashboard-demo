@@ -313,6 +313,35 @@ st.markdown(
             font-size: 0.78rem !important;
         }
     }
+
+    /* 시작일/종료일 입력칸이 들어있는 row만 모바일에서도 한 줄 유지 */
+    @media (max-width: 640px) {
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="시작일"]):has(input[aria-label="종료일"]) {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            gap: 0.35rem !important;
+        }
+
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="시작일"]):has(input[aria-label="종료일"])
+        > div[data-testid="column"] {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+            width: 50% !important;
+        }
+
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="시작일"]):has(input[aria-label="종료일"])
+        input {
+            font-size: 0.72rem !important;
+            padding-left: 0.35rem !important;
+            padding-right: 0.35rem !important;
+        }
+
+        div[data-testid="stHorizontalBlock"]:has(input[aria-label="시작일"]):has(input[aria-label="종료일"])
+        label {
+            font-size: 0.75rem !important;
+        }
+    }
+    
     </style>
     """,
     unsafe_allow_html=True,
