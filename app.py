@@ -626,7 +626,6 @@ st.markdown(
         }
     }
 
-################
     /* 최근 거래내역 페이지 네비게이션: 가운데 정렬 + 버튼 고정폭 */
     .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] {
         display: grid !important;
@@ -683,6 +682,22 @@ st.markdown(
             font-size: 11px !important;
             padding: 0 2px !important;
         }
+    }
+########################
+    /* 최근 거래내역 페이지 네비게이션: 묶음 자체를 가운데 정렬 */
+    .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] {
+        width: fit-content !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .st-key-recent_page_nav_group div[data-testid="stHorizontalBlock"] 
+    > div[data-testid="column"] {
+        width: auto !important;
+        flex: none !important;
     }
 
     </style>
