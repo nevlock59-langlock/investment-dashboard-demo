@@ -798,9 +798,9 @@ def format_number(value: float) -> str:
         return "-"
 
     if abs(value) >= 100_000_000:
-        return f"${value / 100_000_000:,.1f}억"
+        return f"{value / 100_000_000:,.1f}억"
     if abs(value) >= 10_000:
-        return f"${value / 10_000:,.1f}만"
+        return f"{value / 10_000:,.1f}만"
 
     return f"{value:,.0f}"
 
@@ -878,7 +878,7 @@ def show_ranking_tabs(summary: pd.DataFrame):
         show_rank_cards(
             ranked=ranked,
             metric_column="total_trading_value",
-            metric_label="거래대금",
+            metric_label="거래대금($)",
             metric_type="number",
         )
 
