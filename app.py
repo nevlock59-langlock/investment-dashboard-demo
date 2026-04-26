@@ -1026,38 +1026,41 @@ def show_paginated_dataframe(df: pd.DataFrame, page_size: int = 10):
     with st.container(key="recent_table_group"):
         render_recent_table(page_df)
 
-    spacer_left, prev_col, page_col, next_col, spacer_right = st.columns(
-        [0.6, 1, 1.6, 1, 0.6],
-        gap="small",
-    )
-
-    with prev_col:
-        if st.button(
-            "← 이전",
-            disabled=current_page <= 1,
-            use_container_width=True,
-        ):
-            st.session_state.raw_data_page -= 1
-            st.rerun()
-
-    with page_col:
-        st.markdown(
-            f"""
-            <div class="page-nav-text">
-                {current_page} / {total_pages} · 총 {total_rows}건
-            </div>
-            """,
-            unsafe_allow_html=True,
+    with st.container(key="recent_page_nav_group"):
+        prev_col, page_col, next_col = st.columns(
+            [1, 1.4, 1],
+            gap="small",
         )
-
-    with next_col:
-        if st.button(
-            "다음 →",
-            disabled=current_page >= total_pages,
-            use_container_width=True,
-        ):
-            st.session_state.raw_data_page += 1
-            st.rerun()
+    
+        with prev_col:
+            if st.button(
+                "← 이전",
+                disabled=current_page <= 1,
+                use_container_width=True,
+                key="prev_recent_page",
+            ):
+                st.session_state.raw_data_page -= 1
+                st.rerun()
+    
+        with page_col:
+            st.markdown(
+                f"""
+                <div class="page-nav-text">
+                    {current_page} / {total_pages} · 총 {total_rows}건
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+    
+        with next_col:
+            if st.button(
+                "다음 →",
+                disabled=current_page >= total_pages,
+                use_container_width=True,
+                key="next_recent_page",
+            ):
+                st.session_state.raw_data_page += 1
+                st.rerun()
     
 
 def show_insight_cards(insights: list[dict[str, str]]):
