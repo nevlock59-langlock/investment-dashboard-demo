@@ -381,6 +381,52 @@ st.markdown(
             font-size: 0.9rem !important;
         }
     }
+
+    /* 상품 선택 제목 + reset 버튼 row */
+    .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 48px !important;
+        gap: 8px !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+
+    .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] 
+    > div[data-testid="column"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        flex: none !important;
+    }
+
+    .st-key-asset_title_reset_group .section-title-left {
+        white-space: nowrap !important;
+        margin-bottom: 0 !important;
+    }
+
+    .st-key-asset_title_reset_group .stButton button {
+        width: 48px !important;
+        min-width: 48px !important;
+        height: 32px !important;
+        min-height: 32px !important;
+        padding: 0 !important;
+        font-size: 16px !important;
+    }
+
+    @media (max-width: 640px) {
+        .st-key-asset_title_reset_group div[data-testid="stHorizontalBlock"] {
+            grid-template-columns: minmax(0, 1fr) 44px !important;
+            gap: 6px !important;
+        }
+
+        .st-key-asset_title_reset_group .stButton button {
+            width: 44px !important;
+            min-width: 44px !important;
+            height: 32px !important;
+            min-height: 32px !important;
+            font-size: 15px !important;
+        }
+    }
     
     </style>
     """,
